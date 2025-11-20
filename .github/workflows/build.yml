@@ -1,0 +1,33 @@
+name: APK Yapici
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Python Kurulumu
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Flutter Kurulumu
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.16.0'
+        
+    - name: Flet ve Gereklilikleri Kur
+      run: |
+        pip install flet
+        pip install -r requirements.txt
+        
+    - name: APK Derleme (Build)
+      run: |
+        flet build apk --verbose
+        
+    - name: APK'yı Yükle (Artifacts)
+      uses: actions/upload-artifact@v3
+      with:
+        name: transfer-pro-apk
+        path: build/apk/*.apk
