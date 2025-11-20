@@ -4,7 +4,7 @@ import os
 
 # --- AYARLAR ---
 # PC'nin IP adresini buraya yaz (Sonunda / işareti olmasın)
-BASE_URL = "http://192.168.1.100:5000"  
+BASE_URL = "https://baylee-unlogistic-sophia.ngrok-free.dev"  
 
 def main(page: ft.Page):
     page.title = "Transfer Pro"
